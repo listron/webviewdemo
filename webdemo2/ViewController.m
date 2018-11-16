@@ -24,6 +24,17 @@
     [leftButton addTarget:self action:@selector(sender:) forControlEvents:UIControlEventTouchUpInside];
     //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     [self.view addSubview:leftButton];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:(UIBarButtonSystemItemAdd) target:(self) action:@selector(left)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:(UIBarButtonSystemItemEdit) target:(self) action:@selector(right)];
+}
+
+-(void)left{
+    NSLog(@"LEFT");
+}
+-(void)right{
+    XLWebViewController *vc1=[[XLWebViewController alloc] init];
+    [self.navigationController pushViewController:vc1 animated:YES];
 }
 
 - (void)sender:(id)sender {
