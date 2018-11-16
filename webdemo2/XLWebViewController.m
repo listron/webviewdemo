@@ -57,7 +57,44 @@
     else{
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    UIBarButtonItem *item1 = [[UIBarButtonItem alloc]initWithImage:[self reSizeImage:[UIImage
+                                                                                     imageWithColor:[UIColor redColor]] toSize:CGSizeMake(100, 30)] style:UIBarButtonItemStyleDone target:self action:@selector(left)];
+    UIBarButtonItem *item2 = [[UIBarButtonItem alloc]initWithTitle:@"aaa" style:UIBarButtonItemStyleDone target:self action:@selector(left)];
+   // item.title = @"aaaa";
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:(UIBarButtonSystemItemAdd) target:(self) action:@selector(left)];
+    //UIView *item = []
+    NSArray * items = [[NSArray alloc]initWithObjects:item1,item2, nil];
+    self.navigationItem.leftBarButtonItems = items;
+    //self.navigationItem.leftBarButtonItem.image =  [UIImage imageWithColor:[UI]];
+//    UIBarButtonItem *returnButtonItem = [[UIBarButtonItem alloc] init];
+//    returnButtonItem.title = @"返回";
+//    returnButtonItem.tintColor = [UIColor redColor];
+//    self.navigationItem.backBarButtonItem = returnButtonItem;
     
+    //UINavigationBar *bar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[[self class]]];
+    // 设置导航条前景色
+    //[bar setTintColor:[UIColor blueColor]];
+    
+    // 获取导航条按钮的标识
+    //UIBarButtonItem *item = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[self class]]];
+    // 修改返回按钮标题的位置
+    //[item setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -1000) forBarMetrics:UIBarMetricsDefault];
+
+    
+}
+- (UIImage *)reSizeImage:(UIImage *)image toSize:(CGSize)reSize
+{
+    UIGraphicsBeginImageContext(CGSizeMake(reSize.width, reSize.height));
+    [image drawInRect:CGRectMake(0, 0, reSize.width, reSize.height)];
+    UIImage *reSizeImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return [reSizeImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+}
+
+
+-(void)left{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark 初始化webview
